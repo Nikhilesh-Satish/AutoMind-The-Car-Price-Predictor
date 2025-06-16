@@ -1,3 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+body {
+  background-image: url("./assets/images/background-img.jpg");
+  background-size: cover;
+}
+
+.title-text {
+  font-size: 5rem;
+}
+
+.title-subtext {
+  font-size: 2.5rem;
+}
+
+.info-grid {
+  background-color: black;
+  margin-left: 7.2rem;
+  margin-top: 7.2rem;
+}
+
+.info-title {
+  font-size: 2.5rem;
+}
+
+.info-img {
+  width: 25%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-left: 20rem;
+  margin-right: 0rem;
+}
