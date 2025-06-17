@@ -3,5 +3,10 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.5",
     "tailwindcss": "^4.1.10"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "@heroicons/react": "^2.2.0",
+    "@tailwindcss/vite": "^4.1.10"
   }
 }
