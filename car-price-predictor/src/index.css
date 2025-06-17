@@ -3,6 +3,7 @@
 body {
   background-image: url("./assets/images/background-img.jpg");
   background-size: cover;
+  margin-bottom: 2rem;
 }
 
 .title-text {
