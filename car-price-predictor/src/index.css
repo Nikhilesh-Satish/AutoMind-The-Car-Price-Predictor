@@ -3,6 +3,7 @@
 body {
   background-image: url("./assets/images/background-img.jpg");
   background-size: cover;
+  margin-bottom: 2rem;
 }
 
 .title-text {
@@ -13,10 +14,19 @@ body {
   font-size: 2.5rem;
 }
 
-.info-grid {
-  background-color: black;
+.info-class,
+.about-section {
+  margin-top: 2rem;
   margin-left: 7.2rem;
-  margin-top: 7.2rem;
+  margin-right: 7.2rem;
+  margin-bottom: 2rem;
+  background-image: linear-gradient(to bottom, #14121b, #181623);
+}
+
+.info-grid {
+  padding: 4rem;
+  margin-left: 7.2rem;
+  margin-top: 4rem;
 }
 
 .info-title {
@@ -29,4 +39,18 @@ body {
   border-radius: 0.5rem;
   margin-left: 20rem;
   margin-right: 0rem;
+}
+
+.about-section {
+  padding: 2rem;
+}
+
+.about-title {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.about-text {
+  font-size: 1.05rem;
 }
