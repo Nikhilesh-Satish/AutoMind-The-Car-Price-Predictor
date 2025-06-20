@@ -3,7 +3,6 @@
 body {
   background-image: url("./assets/images/background-img.jpg");
   background-size: cover;
-  margin-bottom: 2rem;
 }
 
 .title-text {
@@ -15,7 +14,8 @@ body {
 }
 
 .info-class,
-.about-section {
+.about-section,
+.form-container {
   margin-top: 2rem;
   margin-left: 7.2rem;
   margin-right: 7.2rem;
@@ -53,4 +53,68 @@ body {
 
 .about-text {
   font-size: 1.05rem;
+}
+
+.form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 7.2rem;
+  margin-right: 7.2rem;
+  margin-top: 2rem;
+}
+
+.form-el {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.form-text {
+  margin-right: 1rem;
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+
+.dropdown {
+  background-image: linear-gradient(to bottom, #14121b, #181623);
+  margin-bottom: 2rem;
+}
+
+.dropdown-label {
+  display: flex;
+}
+
+.submit-button {
+  margin-bottom: 2rem;
+}
+.dropdown-row {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dropdown-label {
+  width: 13rem;
+}
+
+.dropdown-select {
+  width: 16rem; /* consistent dropdown width */
+  min-width: 16rem;
+  max-width: 16rem;
+}
+
+.footer {
+  background-image: linear-gradient(to right, #1a1821, #181623);
+  padding-bottom: 1rem;
+  text-align: center;
+  color: #ffffff;
 }
