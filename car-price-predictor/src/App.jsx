@@ -15,6 +15,7 @@ const App = () => {
   return (
     <div>
       <Nav />
+      <section id="home">
       <AnimateOnScroll>
         <h1 className="title-text bg-gradient-to-r from-blue-600 to-yellow-400 bg-clip-text text-transparent">
           <center>AutoMind: The Intelligent Car Price Oracle</center>
@@ -49,12 +50,13 @@ const App = () => {
           />
         </AnimateOnScroll>
       </div>
+      </section>
       <AnimateOnScroll>
-        <About />
+       <section id="about"> <About /></section>
       </AnimateOnScroll>
       <AnimateOnScroll>
-        <Form />
-      </AnimateOnScroll>
+        <section id="form"><Form /></section>
+    </AnimateOnScroll>
       <Footer />
     </div>
   );
