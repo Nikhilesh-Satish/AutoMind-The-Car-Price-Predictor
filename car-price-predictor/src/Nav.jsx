@@ -10,9 +10,9 @@ import {
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Dashboard", href: "App.jsx", current: true },
-  { name: "About Us", href: "About.jsx", current: false },
-  { name: "Predict Car Prices", href: "Form.jsx", current: false },
+  { name: "Home", href: "#home", current: true },
+  { name: "About Us", href: "#about", current: false },
+  { name: "Predict Car Prices", href: "#form", current: false },
 ];
 
 function classNames(...classes) {
@@ -21,7 +21,7 @@ function classNames(...classes) {
 
 export default function Nav() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-50">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

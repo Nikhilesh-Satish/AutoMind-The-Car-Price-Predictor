@@ -2,7 +2,7 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 
 function AnimateOnScroll({ children }) {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
 
   return (
     <div
