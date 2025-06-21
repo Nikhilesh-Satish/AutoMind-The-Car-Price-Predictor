@@ -18,7 +18,7 @@ const App = () => {
       <section id="home">
       <AnimateOnScroll>
         <h1 className="title-text bg-gradient-to-r from-blue-600 to-yellow-400 bg-clip-text text-transparent">
-          <center>AutoMind: The Intelligent Car Price Oracle</center>
+          <center>MindfulAuto: The Intelligent Car Price Oracle</center>
         </h1>
 
         <h3 className="title-subtext bg-gradient-to-r from-blue-600 to-yellow-400 bg-clip-text text-transparent">
