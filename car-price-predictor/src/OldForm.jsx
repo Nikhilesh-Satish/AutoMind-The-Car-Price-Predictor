@@ -15,12 +15,14 @@ function OldForm() {
     seats: '',
     brand: '',
     fuel: '',
-    transmission: ''
+    transmission: '',
+    seller:''
   });
 
   const [result, setResult] = useState(null);
 
-  const brandMap = {
+ 
+const brandMap = {
     "BMW": "brand_BMW",
     "Bentley": "brand_Bentley",
     "Datsun": "brand_Datsun",
@@ -63,6 +65,9 @@ function OldForm() {
     Manual: "transmission_type_Manual",
     Automatic: "transmission_type_Automatic"
   };
+  
+
+ 
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -73,25 +78,11 @@ function OldForm() {
     payload.engine = parseInt(formData.engine);
     payload.max_power = parseFloat(formData.max_power);
     payload.seats = parseInt(formData.seats);
+    payload.seller_type = formData.seller;
+    payload.brand = formData.brand;
+    payload.fuel_type = formData.fuel;
+    payload.transmission_type=formData.transmission;
 
-    for (let key in payload) {
-      if (
-        key.startsWith("brand_") ||
-        key.startsWith("fuel_type_") ||
-        key.startsWith("transmission_type_")
-      ) {
-        payload[key] = 0;
-      }
-    }
-
-    const brandKey = brandMap[formData.brand];
-    if (brandKey) payload[brandKey] = 1;
-
-    const fuelKey = fuelMap[formData.fuel];
-    if (fuelKey) payload[fuelKey] = 1;
-
-    const transKey = transMap[formData.transmission];
-    if (transKey) payload[transKey] = 1;
 
     console.log(payload);
 
@@ -252,6 +243,29 @@ function OldForm() {
             ))}
           </select>
         </div>
+          
+
+
+            <div className="dropdown-row">
+          <label
+            htmlFor="seller"
+            className="dropdown-label text-sm font-large text-gray-900 dark:text-blue-400"
+          >
+            <div className="form-text">Seller :</div>
+          </label>
+          <select
+            value={formData.seller}
+            onChange={(e) => setFormData({ ...formData, seller: e.target.value })}
+            className="dropdown-select block appearance-none w-full bg-gray-700 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-white"
+          >
+            <option> </option>
+            <option>Individual</option>
+            <option>Dealer</option>
+          </select>
+        </div>
+
+
+
 
         <div className="dropdown-row">
           <label
@@ -272,6 +286,7 @@ function OldForm() {
           </select>
         </div>
 
+            
         <button
           type="submit"
           className="submit-button bg-gray-900 hover:bg-blue-900 text-white font-bold py-2 px-4 border border-gray-700 rounded"

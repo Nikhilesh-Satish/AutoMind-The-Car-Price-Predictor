@@ -76,7 +76,7 @@ function NewForm() {
   console.log(data);
 
   if (data?.predicted_price) {
-    setResult(data.predicted_price);
+    setResult(data.predicted_price*100);
   } else {
     console.error("Prediction error:", data);
   }
