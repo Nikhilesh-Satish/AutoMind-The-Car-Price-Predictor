@@ -123,3 +123,11 @@ body {
   text-align: center;
   color: #ffffff;
 }
+
+.result-text
+{
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left:30rem;
+}
