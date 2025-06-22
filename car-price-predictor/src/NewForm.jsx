@@ -8,60 +8,80 @@ function NewForm() {
     levy: '',
     manufacturer: '',
     category: '',
+    leather: '',
     engine_volume: '',
-    mileage: '0',
-    cylinders: '0',
+    mileage: '',
+    cylinders: '',
     wheel: '',
-    airbags: '0',
-    turbo: '0',
+    airbags: '',
+    turbo: '',
     drive: '',
     gearbox: '',
     fuel: ''
   });
   const [result, setResult] = useState(null);
-   const onSubmit=async (e)=>{
-    e.preventDefault();
-    payload.levy = parseInt(formData.levy);
-    payload.manufacturer = formData.manufacturer;
-    payload.category = formData.category;
-    
-    
-    payload.engine_volume = parseInt(formData.engine_volume);
-    payload.mileage = parseInt(formData.mileage);
-    payload.cylinders = parseInt(formData.cylinders);
-    payload.wheel = "right";
-    payload.airbags = parseInt(formData.airbags);
-    payload.turbo = parseInt(formData.turbo);
-    payload.drive = formData.drive ? formData.drive.toLowerCase() : "";
-payload.gearbox = formData.gearbox ? formData.gearbox.toLowerCase() : "";
-payload.fuel = formData.fuel ? formData.fuel.toLowerCase() : "";
+   const onSubmit = async (e) => {
+  e.preventDefault();
 
-    for (let key in payload) {
-  if (
-    key.startsWith("fuel_") ||
-    key.startsWith("gear_") ||
-    key.startsWith("drive_")
-  ) {
-    payload[key] = 0;
+  payload.levy = parseInt(formData.levy);
+  payload.manufacturer = formData.manufacturer;
+  payload.category = formData.category;
+
+  // Convert leather to 1/0
+  payload.leather = formData.leather === "yes" ? 1 : 0;
+
+  payload.engine_volume = parseInt(formData.engine_volume);
+  payload.mileage = parseInt(formData.mileage);
+  payload.cylinders = parseInt(formData.cylinders);
+  payload.wheel = "right";
+  payload.airbags = parseInt(formData.airbags);
+  payload.turbo = parseInt(formData.turbo);
+
+  // Lowercased string fields safely
+  payload.drive = typeof formData.drive === "string" ? formData.drive.toLowerCase() : "";
+  payload.gearbox = typeof formData.gearbox === "string" ? formData.gearbox.toLowerCase() : "";
+  payload.fuel = typeof formData.fuel === "string" ? formData.fuel.toLowerCase() : "";
+
+  // Reset one-hot encoding fields
+  for (let key in payload) {
+    if (
+      key.startsWith("fuel_") ||
+      key.startsWith("gear_") ||
+      key.startsWith("drive_")
+    ) {
+      payload[key] = 0;
+    }
   }
-}
 
-  // Set one-hot encoded fields
-  payload[`fuel_${formData.fuel}`] = 1;
-  payload[`gear_${formData.gearbox}`] = 1;
-  payload[`drive_${formData.drive}`] = 1;
+  // Set one-hot encodings safely
+  if (typeof formData.fuel === "string") {
+    payload[`fuel_${formData.fuel.toLowerCase()}`] = 1;
+  }
+  if (typeof formData.gearbox === "string") {
+    payload[`gear_${formData.gearbox.toLowerCase()}`] = 1;
+  }
+  if (typeof formData.drive === "string") {
+    payload[`drive_${formData.drive.toLowerCase()}`] = 1;
+  }
+
   console.log(payload);
-   const res = await fetch("https://new-car-price-api.onrender.com/predict", {
+
+  const res = await fetch("https://new-car-price-api.onrender.com/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-const data = await res.json();
-console.log(data);
-setResult(data.predicted_price);
 
-  
+  const data = await res.json();
+  console.log(data);
+
+  if (data?.predicted_price) {
+    setResult(data.predicted_price);
+  } else {
+    console.error("Prediction error:", data);
   }
+};
+
   return (
     <div>
     <form className="form" onSubmit={onSubmit}>
@@ -130,9 +150,9 @@ setResult(data.predicted_price);
          value={formData.leather}
          onChange={(e) => setFormData({ ...formData, leather: e.target.value })}
          >
-          <option> </option>
-          <option>Yes</option>
-          <option>No</option>
+          <option value=""> </option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
          
         </select>
       </div>
